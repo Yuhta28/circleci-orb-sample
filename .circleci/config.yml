@@ -2,7 +2,7 @@ version: 2.1
 description: "My first orb"
 
 orbs:
-  helo-world: yuta-orbs/hello-world@0.0.1
+  hello-world: yuta-orbs/hello-world@0.0.1
 
 workflows:
   hello-workflow:
