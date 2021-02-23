@@ -1,5 +1,5 @@
 version: 2.1
-description: "My first orb"
+description: "My Second orb"
 
 executors:
   default:
@@ -24,6 +24,6 @@ commands:
     parameters:
       to:
         type: string
-        default: "World"
+        default: "CI"
     steps:
       - run: echo "Hello, << parameters.to >>"
