@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  cli: circleci/circle-cli@0.1.5
+  cli: circleci/circleci-cli@0.1.9
 
 jobs:
   validation:
