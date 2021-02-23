@@ -2,24 +2,10 @@ version: 2.1
 description: "My first orb"
 
 orbs:
-  my-orb:
-    executors:
-      default:
-        docker:
-        - image: busybox
-    
-    commands:
-      echo:
-        steps:
-          - run: echo "Hello World"
-
-    jobs:
-      myjob:
-        executor: default
-        steps:
-          - echo
+  helo-world: yuta-orbs/hello-world@0.0.1
 
 workflows:
-  main:
+  hello-workflow:
     jobs:
-      - my-orb/myjob
+      - hello-world/echo-job:
+          to: CircleCI
