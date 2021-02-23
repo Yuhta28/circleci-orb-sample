@@ -103,3 +103,4 @@ workflows:
             tags:
               only: /major.*/
           release: major
+          
