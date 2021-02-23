@@ -4,10 +4,23 @@ orbs:
 version: 2.1
 
 workflows:
-  publish-dev-orb:
+  promote--orb:
     jobs:
       - orb-tools/publish-dev:
           orb-path: ./src/hello-orb.yml
           orb-name: yuta-orbs/second-hello
           validate: true
           checkout: true
+      - orb-tools/dev-promote-prod-from-commit-subject:
+          fail-if-semver-not-indicated: true
+          add-pr-comment: true
+          bot-user: orb-bot
+          bot-token-variable: PR_COMMENTER_GITHUB_TOKEN
+          publish-version-tag: true
+          ssh-fingerprints: 3d:2e:8e:f1:2e:b6:88:50:18:ed:2d:b2:0b:b3:db:3f
+          orb-name: yuta-orbs/second-hello
+          requires:
+            - orb-tools/publish-dev
+          filters:
+            branches:
+              only: master
