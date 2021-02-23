@@ -1,0 +1,11 @@
+version: 2.1
+
+
+orbs:
+  hello-world: yuta-orbs/hello-world@0.0.1
+
+workflows:
+  hello-workflow:
+    jobs:
+      - hello-world/echo-job:
+          to: CircleCI

@@ -18,7 +18,7 @@ jobs:
     - run:
         name: "展開テスト"
         command: |
-          result=$(circleci config process .circleci/config.yml | yq '.jobs."hello-world/echo-job".steps[0].run.command')
+          result=$(circleci config process .circleci/test.yml | yq '.jobs."hello-world/echo-job".steps[0].run.command')
           echo ${result} | grep "Hello, CircleCI"
 
 workflows:
