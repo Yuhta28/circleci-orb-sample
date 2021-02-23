@@ -11,7 +11,7 @@ jobs:
     - checkout
     - run:
         name: "バリデーション"
-        command: circlci orb validate ./src/hello-orb.yml
+        command: circleci orb validate ./src/hello-orb.yml
 
 workflows:
   main:
