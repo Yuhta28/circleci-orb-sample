@@ -1,0 +1,25 @@
+version: 2.1
+description: "My first orb"
+
+orbs:
+  my-orb:
+    executors:
+      default:
+        docker:
+        - image: busybox
+    
+    commands:
+      echo:
+        steps:
+          - run: echo "Hello World"
+
+    jobs:
+      myjob:
+        executor: default
+        steps:
+          - echo
+
+workflows:
+  main:
+    jobs:
+      - my-orb/myjob
