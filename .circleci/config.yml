@@ -6,7 +6,7 @@ version: 2.1
 
 parameters:
   dev-orb-version:
-    default: 'dev:first'
+    default: 'dev:second'
     type: string
   run-integration-tests:
     type: boolean
@@ -49,7 +49,7 @@ jobs:
       - run:
           name: devバージョンを公開
           command: |
-            circleci orb publish src/hello-orb.yml sample-orbs/second-hello@dev:second --token ${CIRCLE_TOKEN}
+            circleci orb publish src/hello-orb.yml sample-orbs/second-hello@dev:third --token ${CIRCLE_TOKEN}
             circleci orb publish src/hello-orb.yml sample-orbs/second-hello@dev:${CIRCLE_SHA1:0:7} --token ${CIRCLE_TOKEN}
   
   trigger-integration-test-workflow:
@@ -103,4 +103,3 @@ workflows:
             tags:
               only: /major.*/
           release: major
-          
