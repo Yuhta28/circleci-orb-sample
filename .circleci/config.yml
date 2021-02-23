@@ -1,11 +1,19 @@
 version: 2.1
-description: "My first orb"
 
 orbs:
-  hello-world: yuta-orbs/hello-world@0.0.1
+  cli: circleci/circle-cli@0.1.5
+
+jobs:
+  validation:
+    executor: cli/default
+    steps:
+    - cli/install
+    - checkout
+    - run:
+        name: "バリデーション"
+        command: circlci orb validate ./src/hello-orb.yml
 
 workflows:
-  hello-workflow:
+  main:
     jobs:
-      - hello-world/echo-job:
-          to: CircleCI
+      - validation
