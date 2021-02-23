@@ -14,7 +14,7 @@ workflows:
       - orb-tools/dev-promote-prod-from-commit-subject:
           fail-if-semver-not-indicated: true
           add-pr-comment: true
-          bot-user: orb-bot
+          bot-user: Yuhta28
           bot-token-variable: PR_COMMENTER_GITHUB_TOKEN
           publish-version-tag: true
           ssh-fingerprints: 3d:2e:8e:f1:2e:b6:88:50:18:ed:2d:b2:0b:b3:db:3f
