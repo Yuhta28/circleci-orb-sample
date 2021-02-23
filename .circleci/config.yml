@@ -4,24 +4,17 @@ orbs:
   cli: circleci/circleci-cli@0.1.9
 
 jobs:
-  expansion:
-    executor: cli/default
+  execution:
+    machine: true
     steps:
     - cli/install
     - checkout
     - run:
-        name: "Install yq"
+        name: "ランタイムテスト"
         command: |
-          sudo apt update && \
-          sudo apt-get install jq python-pip python-dev && \
-          sudo pip install yq
-    - run:
-        name: "展開テスト"
-        command: |
-          result=$(circleci config process .circleci/test.yml | yq '.jobs."hello-world/echo-job".steps[0].run.command')
-          echo ${result} | grep "Hello, CircleCI"
+          circleci local execute --config .circleci/test.yml --job hello-world/echo-job | tee local_build_output.txt /dev/stderr | tail -n 1 | grep "Success"
 
 workflows:
   main:
     jobs:
-      - expansion
+      - execution
